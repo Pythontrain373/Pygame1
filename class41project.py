@@ -1,0 +1,27 @@
+from tkinter import *
+root=Tk()
+def calculate():
+    Principal=float(principal.get())
+    Time=float(time.get())
+    Rate=float(rate.get())
+    simple=(Principal*Time*Rate)/100
+    coumpound=Principal*((1+Rate/100)**Time)-Principal
+    simple_interest.config(text=f"Simple Interest: {simple:.2f}")
+    compound_interest.config(text=f"Compound Interest: {coumpound:.2f}")
+root.geometry("400x400")
+root.title("Intrest Calculater")
+Label(root,text="Principal:",bg="#add8e6").grid(row=0,column=0,padx=10,pady=10,sticky=E)
+Label(root,text="Time (years):",bg="#add8e6").grid(row=1,column=0,padx=10,pady=10,sticky=E)
+Label(root,text="Rate of Interest (%):",bg="#add8e6").grid(row=2,column=0,padx=10,pady=10,sticky=E)
+principal=Entry(root)
+principal.grid(row=0,column=1,padx=10,pady=10)
+time=Entry(root)
+time.grid(row=1,column=1,padx=10,pady=10)
+rate=Entry(root)
+rate.grid(row=2,column=1,padx=10,pady=10)
+Button(root,text="Calculate",command=calculate,bg="#90ee90").grid(row=3,column=0,columnspan=2,pady=20)
+simple_interest=Label(root,text="Simple Interest: ",bg="#ffe4e1")
+simple_interest.grid(row=4,column=0,columnspan=2)
+compound_interest=Label(root,text="Compound Interest: ",bg="#ffe4e1")
+compound_interest.grid(row=5,column=0,columnspan=2)
+root.mainloop()
